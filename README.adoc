@@ -1,10 +1,10 @@
-= SW Api client written in fulcro rad with xtdb
+= API Client for https://swapi.dev
 
-A client that runs off https://swapi.dev/api written with fulcro using xtdb for the local database.
+A client that accesses https://swapi.dev/api written with fulcro rad using xtdb for the local database.
 
 == Usage
 
-Clone this repository
+Clone this repository.
 
 The project should now build and run.
 
@@ -45,7 +45,7 @@ While the source is small it is often less hassle to just use `restart`.
 == LICENSE
 
 The MIT License (MIT)
-Copyright (c), Michael Whitford
+Copyright (c), 2023 Michael Whitford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the

@@ -20,6 +20,7 @@
   (martian/request-for swapi :planets)
   (martian/response-for swapi :planets)
   (martian/request-for swapi :planet {:id "10"})
+  ; a valid id gets a good response
   (martian/response-for swapi :planet {:id "10"})
   ; this errors out with an exception from clj-http
   ; the openapi spec file describes 404 as a valid response with a json body

@@ -19,8 +19,9 @@
   [v]
   (with-meta v {:pretty true}))
 
-(defn pretty-middleware [data->string]
+(defn pretty-middleware
   "Returns timbre logging middleware that will reformat items marked with `pretty` as pretty-printed strings using `data->string`."
+  [data->string]
   (fn [data]
     (update data :vargs (fn [args]
                           (mapv

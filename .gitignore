@@ -20,7 +20,8 @@ resources/public/js
 target
 .cpcache
 .shadow-cljs
-.clj-kondo/.cache
+.clj-kondo/*
+!.clj-kondo/config.edn
 .calva
 .lsp
 data

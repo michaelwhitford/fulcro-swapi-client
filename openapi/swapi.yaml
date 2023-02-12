@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Star Wars API
+  description: Custom spec for swapi.dev
+  version: "0.1"
+
+servers:
+  - url: https://swapi.dev/api
+    description: "The Star Wars API server"
+
+paths:
+  /planets/:
+    get:
+      summary: Returns a list of planets
+      operationId: planets
+      responses:
+        "200":
+          description: A list of planets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+  /planets/{id}:
+    get:
+      summary: Returns a single planet
+      operationId: planet
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      repsonses:
+        "200":
+          description: Planet Facts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  gender:
+                    type: string

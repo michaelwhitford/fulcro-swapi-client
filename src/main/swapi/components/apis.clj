@@ -1,4 +1,4 @@
-(ns swapi.apis
+(ns swapi.components.apis
   (:require [martian.core :as martian]
             [martian.yaml :as yaml]
             [martian.interceptors :as interceptors]
@@ -20,4 +20,8 @@
   (martian/request-for swapi :planets)
   (martian/response-for swapi :planets)
   (martian/request-for swapi :planet {:id "10"})
-  (martian/response-for swapi :planet {:id "10"}))
+  (martian/response-for swapi :planet {:id "10"})
+  ; this errors out with an exception from clj-http
+  ; the openapi spec file describes 404 as a valid response with a json body
+  (martian/response-for swapi :planet {:id "40003"})
+  )

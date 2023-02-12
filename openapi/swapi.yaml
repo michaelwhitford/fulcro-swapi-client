@@ -8,11 +8,74 @@ servers:
   - url: https://swapi.dev/api
     description: "The Star Wars API server"
 
+components:
+  parameters:
+    Search:
+      name: search
+      in: query
+      required: false
+      description: Filter items on the server side.
+      schema:
+        type: string
+
+  schemas:
+    Planet:
+      type: object
+      required:
+        - id
+      properties:
+        name:
+          type: string
+        rotation_period:
+          type: string
+        surface_water:
+          type: string
+        climate:
+          type: string
+        residents:
+          type: array
+          items:
+            type: string
+        orbital_period:
+          type: string
+        diameter:
+          type: string
+        created:
+          type: string
+        gravity:
+          type: string
+        edited:
+          type: string
+        films:
+          type: array
+          items:
+            type: string
+        population:
+          type: string
+        terrain:
+          type: string
+        url:
+          type: string
+
+  responses:
+    404Error:
+      description: Item not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              detail:
+                type: string
+
 paths:
   /planets/:
     get:
       summary: Returns a list of planets
       operationId: planets
+      parameters:
+        - $ref: "#/components/parameters/Search"
+
       responses:
         "200":
           description: A list of planets
@@ -23,6 +86,17 @@ paths:
                 properties:
                   count:
                     type: integer
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Planet"
+        "404":
+          $ref: "#/components/responses/404Error"
+
   /planets/{id}:
     get:
       summary: Returns a single planet
@@ -31,17 +105,16 @@ paths:
         - name: id
           in: path
           required: true
+          description: "ID of the planet"
           schema:
             type: string
-      repsonses:
+
+      responses:
         "200":
           description: Planet Facts
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  gender:
-                    type: string
+                $ref: "#/components/schemas/Planet"
+        "404":
+          $ref: "#/components/responses/404Error"

@@ -29,10 +29,10 @@
      (if-let [db (some-> (get-in env [xo/databases :production]) deref)]
        (->> (if (get-in env [:query-params :show-inactive?])
              '{:find [?e]
-                :where [[?e :account/id]
-                        [?e :account/active? true]]}
+                :where [[?e :account/id]]}
              '{:find [?e]
-                :where [[?e :account/id]]})
+                :where [[?e :account/id]
+                        [?e :account/active? true]]})
             (xt/q db)
             (mapv (fn [[id]] {:account/id id})))
        (log/error "No database atom for production schema!"))))

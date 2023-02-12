@@ -52,4 +52,5 @@
 
 (comment
   (start)
+  (stop)
   (restart))

@@ -1,0 +1,2 @@
+{:lint-as {mount.core/defstate clojure.core/def
+           com.fulcrologic.rad.blob/defblobattr clojure.core/def}}
